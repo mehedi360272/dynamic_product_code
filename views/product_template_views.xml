@@ -8,8 +8,7 @@
                 <button name="action_generate_product_code"
                         type="object"
                         class="btn-primary"
-                        string="Get Product Code"
-                        icon="fa-code"/>
+                        string="Get Product Code"/>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='general_information']" position="inside">
                 <field name="default_code" readonly="1"/>
