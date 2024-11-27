@@ -1,0 +1,9 @@
+<odoo>
+    <record id="seq_product_code" model="ir.sequence">
+        <field name="name">Product Code</field>
+        <field name="code">product.code.sequence</field>
+        <field name="prefix"></field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+</odoo>
