@@ -15,7 +15,7 @@ class ProductQRCodeController(http.Controller):
             return request.not_found()  # If the product doesn't exist, return a 404
 
         # Prepare the QR code data: Product Name, Product Code, and UOM
-        qr_data = f"Product Name: {product.name}\nProduct Code: {product.default_code}\nUnit of Measure: {product.uom_id.name}"
+        qr_data = f"Product Name: {product.name}\nProduct Code: {product.default_code}\nUnit of Measure: {product.uom_id.name if product.uom_id else 'N/A'}"
 
         # Generate the QR code
         qr = qrcode.QRCode(
@@ -36,8 +36,10 @@ class ProductQRCodeController(http.Controller):
         qr_image.save(buffer, format='PNG')
         buffer.seek(0)  # Reset the buffer's position to the beginning
 
-        # Set the filename for the downloadable image
-        filename = f"{product.default_code or 'product'}_qr_code.png"
+        # Generate the filename using Product Name and Product Code
+        product_name = product.name.replace(" ", "_")  # Replace spaces with underscores
+        product_code = product.default_code or "unknown_code"
+        filename = f"{product_name}_{product_code}_qr_code.png"
 
         # Return the QR code as a downloadable file
         return http.send_file(buffer, filename=filename, as_attachment=True)
