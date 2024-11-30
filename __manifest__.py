@@ -1,5 +1,5 @@
 {
-    'name': 'Dynamic Product Code Based On Category',
+    'name': 'Dynamic Product Code and QR code',
     'version': '1.0',
     'summary': 'Automatically generates product codes based on category prefixes.',
     'description': """
