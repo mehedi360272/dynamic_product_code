@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <header>
-                <button name="action_generate_and_download_qr_code" type="object" string="Generate QR Code"
+                <button name="action_generate_and_store_qr_code" type="object" string="Generate QR Code"
                         class="oe_highlight"/>
             </header>
             <xpath expr="//header" position="inside">
@@ -13,6 +13,9 @@
                         type="object"
                         class="btn-primary"
                         string="Get Product Code"/>
+            </xpath>
+            <xpath expr="//field[@name='image_1920']" position="after">
+                <field name="qr_code_image" widget="image" class="oe_avatar"/>
             </xpath>
             <xpath expr="//sheet/notebook/page[@name='general_information']" position="inside">
                 <field name="default_code" readonly="1"/>
